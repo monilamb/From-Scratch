@@ -12,10 +12,14 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var queryURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&q="
+var q = "q=";
+var ingredient = [];
+var index = 0;
+
 
 $(document).ready(function () {
-
+  
+    var queryURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&q="
     // queryURL += "apples";
     // $.ajax({
     //     url: queryURL,
@@ -66,9 +70,82 @@ $(document).ready(function () {
     // });
 
     //display data base info
+    database.ref().on("child_added", function(snapshot){
+        console.log(snapshot);
+        console.log(snapshot.val().id);
+        console.log(snapshot.val().recipeList);
+    });
+});
+
+$("#searchBtn").on("click", function() {
+
+
+
+});
+
+$(document).on("click", ".category-input", function() {
+
+    var category = $(".category-input:checked").val();
+
+    console.log(category);
+
+    var addIngredientBtn = $("<button>");
+    addIngredientBtn.addClass("btn btn-light");
+    addIngredientBtn.attr("id", "add-ingredient");
+    addIngredientBtn.attr("form", "user-input");
+    addIngredientBtn.attr("type", "submit");
+    addIngredientBtn.text("Add");
+
+    if(category == 'i'){
+
+        $("#user-input").append(addIngredientBtn);
+
+        console.log(addIngredientBtn);
+    
+    }else if(category == "r"){
+
+        $("#add-ingredient").remove();
+
+    }else{}
+
+});
+
+$(document).on("click", "#add-ingredient", function(event) {
+
+    event.preventDefault();
+    
+    ingredient[index] = $("#table_filter").val().trim();
+
+    index++;
+    
+    if(ingredient.length == 1){
+
+        q += ingredient;
+
+    }else{
+
+        for(j=1; j<ingredient.length - 2 ; j++){
+
+            q += "," + ingredient[j];
+
+        }
+
+        q += "," + ingredient[ingredient.length - 1];
+
+    }
+
+
+
+    console.log(ingredient);
+    console.log(q);
+
+    $("#table_filter").val("");
+
+
+});
+
     // database.ref().on("child_added", function(snapshot){
     //     console.log(snapshot);
     //     console.log(snapshot.val().id);
     //     console.log(snapshot.val().recipeList);
     // });
-});
