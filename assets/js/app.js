@@ -12,7 +12,21 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-$(document).ready(function(){
+var queryURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&q="
+
+$(document).ready(function () {
+
+    // queryURL += "apples";
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET"
+    // }).then(function(response){
+    //     var results = JSON.parse(response);
+    //     console.log(results);
+    //     $.each(results.recipes, function(index){
+    //         console.log(this.title);
+    //     });
+    // });
 
     // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     //     // Handle Errors here.
@@ -30,7 +44,7 @@ $(document).ready(function(){
     //     // Handle Errors here.
     //     var errorCode = error.code;
     //     var errorMessage = error.message;
-        
+
     //     var user = firebase.auth().currentUser;
 
     //     if (user) {
