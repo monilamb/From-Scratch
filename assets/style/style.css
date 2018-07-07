@@ -21,6 +21,14 @@ a:hover {
     background-color: #381D2A !important;
     color: #f3d9b1 !important;
 }
+@font-face {
+    font-family: scriptina;
+    src: url(SCRIPTIN.ttf);
+}
+h1 {
+    color: linear-gradient(25deg,#F3E37C, #BA5624, #7D4600, #F3E37C);
+    font-family: scriptina;
+}
 
 .wrapper {
     width: 100%;
@@ -48,7 +56,7 @@ a:hover {
 .linkBtn {
     height: 68px;
     padding: 0;
-    background-color: #f3d9b1
+    background-color: #f3d9b1;
     border: #381D2A 1px solid;
     padding: 0;
     width: 95px;
@@ -115,4 +123,11 @@ button:hover {
     border: #363946 2px solid;
     margin-left: auto;
     margin-right: auto; 
+}
+
+.card-body {
+    background-image: url(https://cdn.pixabay.com/photo/2017/06/06/22/46/mediterranean-cuisine-2378758_960_720.jpg);
+    margin-bottom: auto;
+    margin-top: 5%;
+    padding: 20px
 }
