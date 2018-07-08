@@ -9,19 +9,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css" />
-    <script src="main.js"></script>
-</head>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script src="assets/js/app.js"></script></head>
 <body>
     <div class="container">
         
         <div class="row">
             <div class="col-md-6 offset-3">
-                <h1 style="text-align: center; font-size: 125px">From Scratch</h1>
+                <strong><h1 class="animated slideInLeft" style="text-align: center; font-size: 125px">From Scratch</h1></strong>
             </div>
         </div>
         
-        <div class="card-body col-md-6 offset-3">
+        <div class="card-body col-md-6 offset-3 animated slideInRight">
         <form class="form-signin">
             <h2 class="form-signin-heading" style="margin-bottom: 0; color: white">Please sign in</h2>
             <hr style="margin-top: 5px; border-color: white">
@@ -44,5 +47,10 @@
         </div>
        
     </div>
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+    </style>
 </body>
 </html>
