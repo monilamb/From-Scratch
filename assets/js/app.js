@@ -83,7 +83,7 @@ $("#searchBtn").on("click", function() {
 
 });
 
-$(document).on("click", ".category-input", function() {
+$(document).one("click", ".category-input", function() {
 
     var category = $(".category-input:checked").val();
 
@@ -98,7 +98,7 @@ $(document).on("click", ".category-input", function() {
 
     if(category == 'i'){
 
-        $("#user-input").append(addIngredientBtn);
+        $("#dropdown-button").append(addIngredientBtn);
 
         console.log(addIngredientBtn);
     
