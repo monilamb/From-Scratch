@@ -11,7 +11,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css" />
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
@@ -37,29 +36,32 @@
                     <div class="row">
                     <div class="col-md-6 offset-3">
                     <div id="signupbox" class="card-body animated slideInRight">
-                            <div class="modal" id="myModal">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                  
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                      <h4 class="modal-title">Error</h4>
-                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                      <p id="modal-text"></p>
-                                    </div>
-                                    
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" id="modal-close" data-dismiss="modal">Close</button>
-                                    </div>
-                                    
-                                  </div>
-                                </div>
-                              </div>
+
+                      <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Error</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              <p id="modal-text"></p>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" id="modal-close" data-dismiss="modal">Close</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
                         <form class="form-signin">
                             <h2 class="form-signin-heading" style="margin-bottom: 0; text-align: center; color: #fdf8db">Welcome back!</h2>
                             <h3 style="text-align: center">We're so excited to see you</h3>
@@ -92,6 +94,7 @@
                 </div>   
     </header>
             
+
 
 </body>
 </html>
