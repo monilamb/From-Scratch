@@ -209,6 +209,19 @@ button:hover {
     text-align: center;
     border: #381D2A 1px solid;
     margin-right: auto;
+    overflow: scroll;
+}
+
+.recipe-select{
+    cursor: pointer;
+}
+
+#recipe-image{
+    height: 225px;
+    width: 325px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 12px;
 }
 
 .ingredients {

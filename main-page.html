@@ -84,7 +84,9 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="fa fa-search"></span></button>
+                                        <button id="searchBtn" type="submit" form="user-input" type="button" class="btn btn-secondary btn-search" ><span class="fa fa-search"></span></button>
+                                    </div>
+
                                 </div>
                             </form> 
                         </div>
@@ -93,11 +95,26 @@
 
                 </div>
 
-
                 <div class="row data">
                     <div class="col-6 images">
                         <img src="#">
                     </div>
+
+            <div class="col-4 offset-1 recipe">
+                <h3>Recipe</h3>
+                <hr>
+                <p id="recipe-list"></p>
+            </div>
+        </div>
+        <br>
+        <div class="col-6 ingredients">
+            <h3>Ingredients</h3>
+            <hr>
+            <form>
+                <input type="checkbox" name="ingredients" value="">
+            </form>
+        </div>
+
 
                     <div class="col-6 recipe">
                         <h3>Recipe</h3>
