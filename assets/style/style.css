@@ -1,36 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
+    height: 100%;
+    width: 100%;
     margin: 0;
-    color:  #381D2A;
-    background-color: #fdf8db;
-    background-image: url("data:image/svg+xml,%3Csvg width='44' height='12' viewBox='0 0 44 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 12v-2L0 0v10l4 2h16zm18 0l4-2V0L22 10v2h16zM20 0v8L4 0h16zm18 0L22 8V0h16z' fill='%23fcd949' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+    padding: 0;
+    color:  #fff;
+    background-color: #fdf8db;   
+    overflow-x: hidden; 
 }    
-li, a {
+.main-page-bg {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://cdn.pixabay.com/photo/2017/06/06/22/46/mediterranean-cuisine-2378758_960_720.jpg);
+    background-size: cover;
+}
+}
+
+.jumbotron a {
     text-decoration: none;
     list-style: none;
     color: #381D2A
 }
 
-a {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+hr {
+    border-color: #381D2A;
 }
 
-a:hover {
-    color: #f3d9b1;
-    background-color: #381D2A !important;
-    color: #f3d9b1 !important;
-}
-@font-face {
+/* @font-face {
     font-family: scriptina;
     src: url(SCRIPTIN.ttf);
 }
-h1 {
+header {
     color: #43803d; 
     font-family: scriptina;
+} */
+
+.v-header {
+height: 100%;
+display: flex;
+align-items: center;
+
 }
 
-hr {
-    border-color: #381D2A;
+
+.row{
+    width: 100%;
+}
+
+.fullscreen-video-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.header-content {
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+}
+
+.fullscreen-video-wrap video {
+    background-size: contain;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.header-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #90c04a;
+    opacity: .3;
+}
+
+.logo {
+    opacity: .8;
+    width: 534px;
+}
+
+.continue-link a {
+    text-decoration: underline;
+    color: #fff;
+    display: block;
+    text-align: center;
+    
+}
+
+.continue-link .a {
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -ms-transition-animation-duration: 5s;
+}
+
+.animated {
+    -webkit-animation-duration: 2.5s;
+    -moz-animation-duration: 2.5s;
+    -ms-transition-animation-duration: 2.5s;
+}
+
+.logInRtn {
+    -webkit-animation-duration: 2.5s;
+    -moz-animation-duration: 2.5s;
+    -ms-transition-animation-duration: 2.5s;
 }
 
 .wrapper {
@@ -49,9 +132,13 @@ hr {
     margin-bottom: 0;
 }
 
+.fa {
+    height: 100%;
+    width: 100%;
+}
+
 .links {
     list-style-type: none;
-    padding-left: 50px;
 }
 
 .linkBtn {
@@ -79,6 +166,7 @@ button:hover {
     color: #f3d9b1;
 }
 
+
 #table_filter {
     height: 50px;
 }
@@ -104,13 +192,14 @@ button:hover {
     padding: 0;
 }
 
-
+.data {
+    margin: 0 !important;
+}
 
 .images {
     background: linear-gradient(#90c04a, #fdf8db, #ffefa9);
     height: 250px;
     border: #381D2A 1px solid;
-    border-radius: 5px;
     opacity: .99;
     margin-left: auto;
 }
@@ -119,7 +208,6 @@ button:hover {
     height: 250px;
     text-align: center;
     border: #381D2A 1px solid;
-    border-radius: 5px;
     margin-right: auto;
 }
 
@@ -127,14 +215,27 @@ button:hover {
     background: linear-gradient( #ffefa9, #fcd949);
     text-align: center;
     border: #381D2A 1px solid;
-    border-radius: 5px;
     margin-left: auto;
     margin-right: auto; 
 }
 
 .card-body {
     background-image: url(https://cdn.pixabay.com/photo/2017/06/06/22/46/mediterranean-cuisine-2378758_960_720.jpg);
+    border-radius: 10px;
     margin-bottom: auto;
     margin-top: 5%;
-    padding: 20px
+    padding: 20px;
 }
+
+.card-body p {
+    float: left;
+}
+
+.card-body a {
+    color: #fff;
+    margin-left: 5px;
+}
+
+
+
+
