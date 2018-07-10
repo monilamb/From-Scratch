@@ -25,39 +25,55 @@
 
 <body>
 
-    <div class="wrapper">
+    <div class="main-page-bg">
+        <div style="background-color: #fdf8db" class="container">
 
         
-        <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid">
         
-            <div class="row">
-                <div class="col-2">
-                    <img style="width: 100%; height: 95px; position: relative; top: 50%; transform: translateY(-50%)" src="assets/images/tflm.co.53RYZQBZI-1.png">
+                <div style="align-items: center" class="row">
+                    <div class="col-2">
+                        <img style="width: 100%; height: 95px; position: relative; top: 50%;" src="assets/images/logo2.png">
+                    </div>
+
+                    <div class="col-6 searchFilter">
+
+                            <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Find a recipe.." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                      <button style="width: auto; color: #fdf8db" class="btn btn-outline-secondary" type="button">Ingredient Search</button>
+                                    </div>
+                                  </div>
+                                 
+                        </div>
+
+                    <div class="btn-group links col-3">
+                        <a href="#">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_whatshot_black_48dp.png"></button>
+                        </a>
+                        <a href="#">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_favorite_black_48dp.png"></button>
+                        </a>
+                        <a href="#">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_person_black_48dp.png"></button>
+                        </a>
+                    </div>
                 </div>
-            <div class="btn-group links col-3 offset-6">
-                <a href="#">
-                    <button type="button" class="linkBtn">Home</button>
-                </a>
-                <a href="#">
-                    <button type="button" class="linkBtn">Recipes</button>
-                </a>
-                <a href="#">
-                    <button type="button" class="linkBtn">Text</button>
-                </a>
+
             </div>
-            </div>
-        </div>
         
         <br>
         <br>
-        <div class="row">
-            <div class="col-8 searchFilter">
+
+                <div class="row">
+                    <div class="col-8 searchFilter">
 
                         <div class="input-group">
                             <form id="user-input" style="width: 100%">
                                 <input placeholder="Search Recipes..." id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
+
                                 <div class="input-group-btn" id="dropdown-button">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >&nbsp;</span></button>
+                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >&nbsp;</span></button>
                                         <div class="dropdown-menu dropdown-menu-right" >
                                             <ul class="category_filters" >
                                                 <li>
@@ -70,19 +86,19 @@
                                         </div>
                                         <button id="searchBtn" type="submit" form="user-input" type="button" class="btn btn-secondary btn-search" ><span class="fa fa-search"></span></button>
                                     </div>
+
                                 </div>
-                            </form>  
-                          
+                            </form> 
+                        </div>
+                             
+                    </div>
 
-            </div>
+                </div>
 
-        </div>
-        <br>
-        <br>
-        <div class="row data">
-            <div class="col-3 images">
-                <img id= "recipe-image" src="#">
-            </div>
+                <div class="row data">
+                    <div class="col-6 images">
+                        <img src="#">
+                    </div>
 
             <div class="col-4 offset-1 recipe">
                 <h3>Recipe</h3>
@@ -99,9 +115,29 @@
             </form>
         </div>
 
+
+                    <div class="col-6 recipe">
+                        <h3>Recipe</h3>
+                        <hr>
+                        <p></p>
+                    </div>
+                </div>
+
+                    <div class="col-12 ingredients">
+                        <h3>Ingredients</h3>
+                        <hr>
+                        <form>
+                            <input type="checkbox" name="ingredients" value="">
+                        </form>
+                    </div>
+
+    </div>
     </div>
 
-
 </body>
-
+<style>
+    body{
+        color: #381D2A;
+    }
+</style>
 </html>
