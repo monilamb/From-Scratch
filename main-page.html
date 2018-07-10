@@ -43,6 +43,8 @@
                                     <div class="input-group-append">
                                       <button style="width: auto; color: #fdf8db" class="btn btn-outline-secondary" type="button">Ingredient Search</button>
                                     </div>
+                                    &nbsp;<button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="fa fa-search"></span></button>
+
                                   </div>
                                  
                         </div>
@@ -64,35 +66,6 @@
         
         <br>
         <br>
-
-                <div class="row">
-                    <div class="col-8 searchFilter">
-
-                        <div class="input-group">
-                            <form id="user-input" style="width: 100%">
-                                <input placeholder="Search Recipes..." id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
-
-                                <div class="input-group-btn" id="dropdown-button">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >&nbsp;</span></button>
-                                        <div class="dropdown-menu dropdown-menu-right" >
-                                            <ul class="category_filters" >
-                                                <li>
-                                                    <input class="category-input" data-label="All" id="all" value="r" name="radios" type="radio" checked><label for="all">Recipes</label>
-                                                </li>
-                                                <li>
-                                                    <input class="category-input" type="radio" name="radios" id="Design" value="i" ><label class="category-label" for="Design">Ingredients</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="fa fa-search"></span></button>
-                                </div>
-                            </form> 
-                        </div>
-                             
-                    </div>
-
-                </div>
-
 
                 <div class="row data">
                     <div class="col-6 images">
