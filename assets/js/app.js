@@ -138,6 +138,7 @@ $(document).on("click", "#searchBtn", function(event) {
     //reset #recipe-list and searchedRecipeList array on new search
     $("#recipe-list").html("");
     searchedRecipeList = [];
+    $("#recipe-image").attr("src", "");
 
     var category = $(".category-input:checked").val();
 
