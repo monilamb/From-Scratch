@@ -17,7 +17,7 @@ var ingredient = [];
 var searchedRecipeList = [];
 var index = 0;
 var ingredientBtn = false;
-var queryURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
+var queryURL = "https://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
 var email = null;
 var password = null;
 
