@@ -22,50 +22,18 @@ var email = null;
 var password = null;
 
 $(document).ready(function () {
-    
-    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-    //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
-    //     {
-    //         return true;
-    //     }
-    //     alert(errorCode + errorMessage);
-    //     return false;
-    // });
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var displayName = user.uid;
+          console.log("page load...");
+          console.log(user);
+        } else {
+          // User is signed out.
+          // ...
+        }
+       });
 
-    // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-
-    //     var user = firebase.auth().currentUser;
-
-    //     if (user) {
-    //     return true;
-    //     } else {
-    //     alert(errorCode + errorMessage);
-    //     return false;
-    //     }
-    // });
-
-    //push information to Firebase
-    // database.ref().push({
-    //     id: "testID",
-    //     recipeList: [
-    //         "List1",
-    //         "List2",
-    //         "List3"
-    //     ]
-    // });
-
-    //display data base info
-    // database.ref().on("child_added", function(snapshot){
-    //     console.log(snapshot);
-    //     console.log(snapshot.val().id);
-    //     console.log(snapshot.val().recipeList);
-    // });
 });
 
 //constructs q= portion of queryURL for ingredient add category. 
@@ -174,6 +142,7 @@ $(document).on("click", "#searchBtn", function(event) {
                 queryRecipe += recipe[i];
 
             }else{
+                
 
                 queryRecipe += ("+" + recipe[i]);
 
@@ -262,17 +231,34 @@ $(document).on("click", "#add-ingredient", function(event) {
 $(document).on("click", "#login-submit", function(event){
 
     event.preventDefault();
+        console.log("Entered on click");
 
+        if($("#inputEmail").val().trim()){
 
-    if($("#inputEmail").val().trim()){
+            email = $("#inputEmail").val().trim();
 
-        email = $("#inputEmail").val().trim();
-
-        var valid = validateEmail(email);          
+            var valid = validateEmail(email);   
+            password = $("#inputPassword").val().trim();   
+            if(valid == true){
+                //DEMENCIA
+                firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(error.code);
+                console.log(error.code == "auth/user-not-found");
+                alert("error");
+                if (error.code == "auth/user-not-found"){
+                    alert("This email is not associated with an account. Please register.");
+                }   
+                
+            });
+            setTimeout(function(){
+                self.location.href = 'main-page.html';
+            },2000);
         
-        if(valid == true){
-
-        
+            
+            
         }else{
 
             email = null;
@@ -318,6 +304,95 @@ $(document).on("click", "#login-submit", function(event){
 
 
 });
+
+$(document).on("click", "#signup-submit", function(event){
+    //REGISTER BUTTON
+
+        event.preventDefault();
+        console.log("Entered on click");
+        var username = $("#inputUsername").val().trim();
+
+        if($("#inputEmail").val().trim()){
+
+            email = $("#inputEmail").val().trim();
+
+            var valid = validateEmail(email);   
+            password = $("#inputPassword").val().trim();
+            if(valid == true){
+                console.log("email was valid");
+                firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    if (errorCode){
+                        alert(error.code +": " + error.message);
+                    }
+                });
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        database.ref().push({
+                            uid: user.uid,
+                            username: username,
+                            recipeid: []
+                            
+                          });
+                      console.log(user);
+                    } else {
+                      // User is signed out.
+                      // ...
+                    }
+                   });
+                   setTimeout(function(){
+                    self.location.href = 'main-page.html';
+                },2000);
+            
+        }
+        else{
+
+            email = null;
+
+            $("#modal-text").text("Please Enter a Valid Email.");
+        
+            $("#myModal").css("display", "block");
+
+            
+
+            
+        }
+        
+    }else{
+
+        $("#modal-text").text("Please Enter an Email Address.");
+        
+        $("#myModal").css("display", "block");
+ 
+    }
+    
+    if(email != null){
+
+        if($("#inputPassword").val().trim()){
+        
+            password = $("#inputPassword").val().trim();
+            
+
+        }else{
+
+            $("#modal-text").text("Please Enter a Password.");
+            
+            $("#myModal").css("display", "block");
+
+           
+
+        }
+    }
+
+    console.log(email);
+    console.log(password);
+    $("#inputPassword").val("");
+    $("#inputEmail").val("");
+
+});
+
 
 //hides modal when user presses close button
 $(document).on("click", "#modal-close", function(){
