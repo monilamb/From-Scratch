@@ -12,6 +12,13 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+//ajax prefilter to allow Cors
+$.ajaxPrefilter(function (options) {
+    if (options.crossDomain && $.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
+
 var q = "q=";
 var ingredient = [];
 var searchedRecipeList = [];
@@ -165,13 +172,6 @@ $(document).on("click", "#searchBtn", function (event) {
     } else {
 
     };
-
-    //ajax prefilter to allow Cors
-    $.ajaxPrefilter(function (options) {
-        if (options.crossDomain && $.support.cors) {
-            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-        }
-    });
 
     //ajax call to return results for query
     $.ajax({
@@ -451,13 +451,6 @@ $(document).on("click", ".recipe-select", function () {
     queryMode = "get";
     queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
     queryURL += selectedRecipe.recipe_id;
-
-    //ajax prefilter to allow Cors
-    $.ajaxPrefilter(function (options) {
-        if (options.crossDomain && $.support.cors) {
-            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-        }
-    });
 
     //ajax call to return results for query
     $.ajax({
