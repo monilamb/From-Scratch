@@ -15,6 +15,7 @@ var database = firebase.database();
 var q = "q=";
 var ingredient = [];
 var searchedRecipeList = [];
+var socialRankRecipeList = [];
 var index = 0;
 var ingredientBtn = false;
 var queryMode = "";
@@ -178,13 +179,21 @@ $(document).on("click", "#searchBtn", function(event) {
         var results = JSON.parse(response);
         console.log(results);
         $.each(results.recipes, function(index){
+            var parentDiv  = $("<div>")
             var newDiv = $("<div>");
+            var likeBtn = $("<a>")
+            likeBtn.addClass("fa fa-heart");
+            likeBtn.attr("href", "#");
             newDiv.addClass("recipe-select");
+            parentDiv.addClass("clearfix")
             newDiv.attr("data-index", index);
             newDiv.html(this.title);
-            $("#recipe-list").append(newDiv);
-
+            parentDiv.append(newDiv);
+            parentDiv.append(likeBtn);
+            $("#recipe-list").append(parentDiv);
+            
             searchedRecipeList.push(this);
+            console.log(likeBtn);
         });
     });
 

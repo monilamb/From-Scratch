@@ -218,6 +218,14 @@ button:hover {
 
 .recipe-select{
     cursor: pointer;
+    float: left;
+    width: 75%;
+    text-align: right;
+}
+
+.fa-heart {
+    width: 15%;
+    text-align: left;
 }
 
 #recipe-image{
