@@ -142,7 +142,7 @@ $(document).on("click", "#searchBtn", function(event) {
                 queryRecipe += recipe[i];
 
             }else{
-                
+
 
                 queryRecipe += ("+" + recipe[i]);
 
@@ -333,7 +333,7 @@ $(document).on("click", "#signup-submit", function(event){
                         database.ref().push({
                             uid: user.uid,
                             username: username,
-                            recipeid: []
+                            recipeid: ""
                             
                           });
                       console.log(user);
