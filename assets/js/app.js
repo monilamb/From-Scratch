@@ -22,6 +22,8 @@ var queryMode = "";
 var queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
 var email = null;
 var password = null;
+var favoritesArray = [];
+var favoritesIndex = 0;
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -181,10 +183,13 @@ $(document).on("click", "#searchBtn", function (event) {
 
         $.each(results.recipes, function (index) {
 
+            var parentDiv = $("<div>");
             var newDiv = $("<div>");
             var likeBtn = $("<a>")
-            likeBtn.addClass("fa fa-heart");
+            likeBtn.addClass("fa fa-heart like-btn");
             likeBtn.attr("href", "#");
+            console.log(this.recipe_id);
+            likeBtn.val(this.recipe_id);
             newDiv.addClass("recipe-select");
             parentDiv.addClass("clearfix")
             newDiv.attr("data-index", index);
@@ -481,3 +486,20 @@ $(document).on("click", ".recipe-select", function () {
 
 });
 
+
+//favorites index needs to be set to recipeArray.length when user favorites are loaded on login.
+$(document).on("click", ".like-btn", function(){
+
+    var recipeID = $(this).val();
+    
+    favoritesArray[favoritesIndex] = recipeID;
+
+    console.log("favorite added: " + favoritesArray[favoritesIndex]);
+
+    favoritesIndex++;
+
+    console.log(favoritesArray);
+
+
+
+});
