@@ -17,7 +17,8 @@ var ingredient = [];
 var searchedRecipeList = [];
 var index = 0;
 var ingredientBtn = false;
-var queryURL = "https://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
+var queryMode = "";
+var queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
 var email = null;
 var password = null;
 
@@ -150,6 +151,8 @@ $(document).on("click", "#searchBtn", function(event) {
 
         }
 
+        queryMode = "search";
+        queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
         queryURL = queryURL + queryRecipe;
         $("#table_filter").val("");
         
@@ -160,6 +163,13 @@ $(document).on("click", "#searchBtn", function(event) {
 
     };
 
+    //ajax prefilter to allow Cors
+    $.ajaxPrefilter(function(options) {
+        if (options.crossDomain && $.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
+
     //ajax call to return results for query
     $.ajax({
         url: queryURL,
@@ -168,8 +178,6 @@ $(document).on("click", "#searchBtn", function(event) {
         var results = JSON.parse(response);
         console.log(results);
         $.each(results.recipes, function(index){
-            console.log(this.title);
-
             var newDiv = $("<div>");
             newDiv.addClass("recipe-select");
             newDiv.attr("data-index", index);
@@ -402,6 +410,48 @@ $(document).on("click", "#modal-close", function(){
 });
 
 $(document).on("click", ".recipe-select", function(){
-    $("#recipe-image").attr("src", searchedRecipeList[parseInt($(this).attr("data-index"))].image_url);
+    var selectedRecipe = searchedRecipeList[parseInt($(this).attr("data-index"))];
+    
+    $("#recipe-image").attr("src", selectedRecipe.image_url);
+
+    //reset #ingredient-list
+    $("#ingredient-list").html("");
+
+    queryMode = "get";
+    queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
+    queryURL += selectedRecipe.recipe_id;
+
+    //ajax prefilter to allow Cors
+    $.ajaxPrefilter(function(options) {
+        if (options.crossDomain && $.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
+
+    //ajax call to return results for query
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        var results = JSON.parse(response);
+        console.log(results);
+        $.each(results.recipe.ingredients, function(index){
+            var newInput = $("<input>");
+            newInput.attr("type", "checkbox");
+            newInput.attr("name", "ingredient" + index);
+            newInput.attr("value", this)
+            
+            var newLabel = $("<label>");
+            newLabel.html(this);
+
+            var newDiv = $("<div>");
+            newDiv.html("<br>");
+            
+            $("#ingredient-list").append(newInput);
+            $("#ingredient-list").append(newLabel);
+            $("#ingredient-list").append(newDiv);
+        });
+    });
+
 });
 
