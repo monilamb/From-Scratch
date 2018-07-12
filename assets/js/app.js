@@ -193,7 +193,7 @@ $(document).on("click", "#searchBtn", function(event) {
             $("#recipe-list").append(parentDiv);
             
             searchedRecipeList.push(this);
-            console.log(likeBtn);
+
         });
     });
 
