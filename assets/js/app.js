@@ -27,6 +27,7 @@ var index = 0;
 var ingredientBtn = false;
 var queryMode = "";
 var queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
+var rankURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&sort=r";
 var email = null;
 var password = null;
 var favoritesArray = [];
@@ -107,6 +108,22 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 
+}
+
+//display the top socially ranked recipes
+function displaySocialRank(){
+    //ajax call to return results for query
+    $.ajax({
+        url: rankURL,
+        method: "GET"
+    }).then(function (response) {
+        var results = JSON.parse(response);
+        console.log(results);
+
+        $.each(results.recipes, function (index) {
+            //dynamically write the recipes to the page
+        });
+    });
 }
 
 //Triggers search request, need to connect to ajax call.
@@ -204,7 +221,7 @@ $(document).on("click", "#searchBtn", function (event) {
     });
 
     //reset queryURL
-    queryURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
+    queryURL = "https://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
 
 });
 
