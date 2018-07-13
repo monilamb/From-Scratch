@@ -501,5 +501,5 @@ $(document).on("click", ".like-btn", function(){
     console.log(favoritesArray);
 
 
-
 });
+
