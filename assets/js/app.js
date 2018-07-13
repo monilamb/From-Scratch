@@ -64,7 +64,10 @@ $(document).ready(function () {
         }).then(function (response) {
             var results = JSON.parse(response);
             console.log(results);
-            $("#recipe-image").attr("src", results.recipe.image_url);
+            var imageDiv = $("<img>");
+            imageDiv.attr("src", results.recipe.image_url);
+            $(".images").append(imageDiv);
+            
             $.each(results.recipe.ingredients, function (index) {
                 var newInput = $("<input>");
                 newInput.attr("type", "checkbox");
@@ -639,7 +642,7 @@ $(document).on("click", "#favorites-link", function(){
 
                         console.log("este es concat: " + fa);
                         console.log(pushKey);
-                    firebase.database().ref().child(pushKey)
+                    firebase.database().ref('/' + pushkey)
                         .set({ recipeid: fa , username: childData.username, uid: childData.uid, pkey: childData.pkey });
                 
                     }
