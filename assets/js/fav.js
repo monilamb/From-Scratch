@@ -18,7 +18,9 @@ $(document).ready(function(){
             var div = $("<div>");
             div.addClass("favorite-item");
             var imgDiv = $("<img>");
+            div.addClass("favorite-img");
             var titleDiv = $("<div>");
+            div.addClass("favorite-title");
 
             imgDiv.attr("src", result.recipe.image_url);
             titleDiv.text(result.recipe.title);
