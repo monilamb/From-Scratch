@@ -298,6 +298,31 @@ $(document).on("click", "#login-submit", function (event) {
                 }
 
             }).then(function () {
+                firebase.auth().onAuthStateChanged(function (user) {
+                    if (user) {
+                        // User is signed in.
+                        var displayName = user.uid;
+                        console.log("page load...");
+                        console.log(user);
+            
+                        //GETTING USER ID
+            
+                        database.ref().on('value', function(snapshot) {
+                            snapshot.forEach(function(childSnapshot) {
+                                var childData = childSnapshot.val();
+                                if(childData.uid==user.uid){
+                                    localStorage.setItem("pushKey", childData.pkey);
+                                }
+                            });
+                        });
+            
+                    } else {
+                        // User is signed out.
+                        // ...
+                    }
+                });
+            
+
                 console.log("esto es proceed afuera... " + proceed);
                 if (proceed) {
                     setTimeout(function () {
@@ -380,14 +405,26 @@ $(document).on("click", "#signup-submit", function (event) {
                 }
             }).then(function () {
                 firebase.auth().onAuthStateChanged(function (user) {
-                    
+                    if (proceed){
                     if (user) {
                         localStorage.clear();
                         pushkey = database.ref().push({
                             uid: user.uid,
                             username: username,
-                            recipeid: ""
+                            recipeid: "",
+                            pkey: ""
     
+                        });
+                        database.ref().on('value', function(snapshot) {
+                            snapshot.forEach(function(childSnapshot) {
+                                var childData = childSnapshot.val();
+                                if(childData.uid==user.uid){
+                                    console.log(childData.pkey);
+                                firebase.database().ref().child(pushkey.path.pieces_[pushkey.path.pieceNum_])
+                                    .set({ recipeid: childDate.recipeid , username: childData.username, uid: childData.uid, pkey: pushkey.path.pieces_[pushkey.path.pieceNum_] });
+                            
+                                }
+                            });
                         });
                         console.log(pushkey);
                         localStorage.setItem("pushKey", pushkey.path.pieces_[pushkey.path.pieceNum_]);
@@ -396,7 +433,9 @@ $(document).on("click", "#signup-submit", function (event) {
                         // User is signed out.
                         // ...
                     }
+                }
                 });
+            
 
                 console.log("esto es proceed afuera... " + proceed);
                 if (proceed) {
@@ -453,6 +492,27 @@ $(document).on("click", "#signup-submit", function (event) {
     $("#inputEmail").val("");
 
 });
+
+$(document).on("click", "#sign-out-btn", function () {
+    var proceed = true;
+    localStorage.clear();
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+      }).catch(function(error) {
+          proceed = false;
+        // An error happened.
+      });
+
+      if (proceed) {
+        setTimeout(function () {
+            self.location.href = 'index.html'
+        }, 2000)
+    }
+
+
+
+});
+
 
 
 //hides modal when user presses close button
