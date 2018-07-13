@@ -565,7 +565,7 @@ $(document).on("click", "#modal-close", function () {
 $(document).on("click", ".recipe-select", function () {
     var selectedRecipe = searchedRecipeList[parseInt($(this).attr("data-index"))];
 
-    $("#recipe-image").attr("src", selectedRecipe.image_url);
+    $(".images").html("<a href='" + selectedRecipe.source_url + "' target='_blank'><img id='recipe-image' src=" + selectedRecipe.image_url + "></a>");
 
     //reset #ingredient-list
     $("#ingredient-list").html("");
