@@ -32,6 +32,7 @@ var email = null;
 var password = null;
 var favoritesArray = [];
 var favoritesIndex = 0;
+var pushkey;
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -373,19 +374,23 @@ $(document).on("click", "#signup-submit", function (event) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                proceed = false;
                 if (errorCode) {
                     alert(error.code + ": " + error.message);
                 }
             }).then(function () {
-
                 firebase.auth().onAuthStateChanged(function (user) {
+                    
                     if (user) {
-                        database.ref().push({
+                        localStorage.clear();
+                        pushkey = database.ref().push({
                             uid: user.uid,
                             username: username,
                             recipeid: ""
     
                         });
+                        console.log(pushkey);
+                        localStorage.setItem("pushKey", pushkey.path.pieces_[pushkey.path.pieceNum_]);
                         console.log(user);
                     } else {
                         // User is signed out.
