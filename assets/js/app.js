@@ -461,7 +461,7 @@ $(document).on("click", "#signup-submit", function (event) {
                                 if(childData.uid==user.uid){
                                     console.log(childData.pkey);
                                 firebase.database().ref().child(pushkey.path.pieces_[pushkey.path.pieceNum_])
-                                    .set({ recipeid: childDate.recipeid , username: childData.username, uid: childData.uid, pkey: pushkey.path.pieces_[pushkey.path.pieceNum_] });
+                                    .set({ recipeid: childData.recipeid , username: childData.username, uid: childData.uid, pkey: pushkey.path.pieces_[pushkey.path.pieceNum_] });
                             
                                 }
                             });
@@ -615,6 +615,47 @@ $(document).on("click", ".like-btn", function(){
 
     console.log(favoritesArray);
 
+
+});
+
+$(document).on("click", "#favorites-link", function(){
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        
+        if (user) {
+            var pushKey = localStorage.getItem("pushKey"); 
+            var fa;  
+           
+            database.ref().once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childData = childSnapshot.val();
+                    if(childData.uid==user.uid){
+                        if (childData.recipeid != ""){
+                            
+                        fa = favoritesArray.concat(childData.recipeid);}
+                        else{
+                            fa = favoritesArray;
+                        }
+
+                        console.log("este es concat: " + fa);
+                        console.log(pushKey);
+                    firebase.database().ref().child(pushKey)
+                        .set({ recipeid: fa , username: childData.username, uid: childData.uid, pkey: childData.pkey });
+                
+                    }
+                });
+            });
+        
+        } else {
+            // User is signed out.
+            // ...
+        }
+    
+    });
+
+    setTimeout(function () {
+        self.location.href = 'favorites.html'
+    }, 2000)
 
 });
 

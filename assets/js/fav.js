@@ -1,8 +1,33 @@
-var favoritesArray = ["35171", "47319", "35382", "47024"];
+var favoritesArray = [];
+
+
+console.log("1: "+favoritesArray);
 
 //Populates favorites from user array
 $(document).ready(function(){
-
+    
+    firebase.auth().onAuthStateChanged(function (user) {
+        
+        if (user) {
+            database.ref().once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childData = childSnapshot.val();
+                    if(childData.uid==user.uid){
+                        console.log("user matched");
+                        favoritesArray = childData.recipeid;
+                        console.log(childData.recipeid);
+                    }
+                });
+            });
+        
+        } else {
+            // User is signed out.
+            // ...
+        }
+    
+    });
+    setTimeout(function(){
+    console.log("2: " +favoritesArray);
     for(var i=0; i<favoritesArray.length; i++){ 
 
         console.log(favoritesArray);
@@ -38,6 +63,7 @@ $(document).ready(function(){
 
 
     }
+}, 2000);
 });
 
 //Click function to return to main using session storage to transfer ID.
