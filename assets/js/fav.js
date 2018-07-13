@@ -1,5 +1,6 @@
 var favoritesArray = ["35171", "47319", "35382", "47024"];
 
+//Populates favorites from user array
 $(document).ready(function(){
 
     for(var i=0; i<favoritesArray.length; i++){ 
@@ -14,11 +15,15 @@ $(document).ready(function(){
             method: "GET"
         }).then(function (response) {
 
+
             var result = JSON.parse(response);
+            console.log(result);
             var div = $("<div>");
             div.addClass("favorite-item");
+            div.val(result.recipe.recipe_id);
             var imgDiv = $("<img>");
             var titleDiv = $("<div>");
+            
 
             imgDiv.attr("src", result.recipe.image_url);
             titleDiv.text(result.recipe.title);
@@ -33,3 +38,13 @@ $(document).ready(function(){
     }
 });
 
+//Click function to return to main using session storage to transfer ID.
+$(document).on("click", ".favorite-item", function(){
+
+    var displayFavID = $(this).val();
+
+    sessionStorage.setItem("favID", displayFavID);
+
+    self.location.href = 'main-page.html';
+
+});

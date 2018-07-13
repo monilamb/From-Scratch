@@ -33,6 +33,7 @@ var password = null;
 var favoritesArray = [];
 var favoritesIndex = 0;
 var pushkey;
+var displayFavID = sessionStorage.getItem("favID");
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -46,6 +47,45 @@ $(document).ready(function () {
             // ...
         }
     });
+
+//displays selected favorites ingredients and image on main.
+    if(displayFavID != null){
+
+
+        console.log(displayFavID);
+        queryMode = "get";
+        queryURL = "https://food2fork.com/api/get?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
+        queryURL += displayFavID;
+
+        //ajax call to return results for query
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var results = JSON.parse(response);
+            console.log(results);
+            $("#recipe-image").attr("src", results.recipe.image_url);
+            $.each(results.recipe.ingredients, function (index) {
+                var newInput = $("<input>");
+                newInput.attr("type", "checkbox");
+                newInput.attr("name", "ingredient" + index);
+                newInput.attr("value", this)
+
+                var newLabel = $("<label>");
+                newLabel.html(this);
+
+                var newDiv = $("<div>");
+                newDiv.html("<br>");
+
+                $("#ingredient-list").append(newInput);
+                $("#ingredient-list").append(newLabel);
+                $("#ingredient-list").append(newDiv);
+            });
+        });
+
+        displayFavID = null;
+        sessionStorage.setItem("favID", null);
+    }else{}
 
 });
 
