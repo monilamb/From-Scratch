@@ -34,6 +34,7 @@ var favoritesArray = [];
 var favoritesIndex = 0;
 var pushkey;
 var displayFavID = sessionStorage.getItem("favID");
+var displayTrendID = sessionStorage.getItem("trendID");
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -49,13 +50,26 @@ $(document).ready(function () {
     });
 
 //displays selected favorites ingredients and image on main.
-    if(displayFavID != null){
+    if(displayFavID != null || displayTrendID != null){
 
+        var itemID;
+
+        if(displayFavID != null){
+
+            itemID = displayFavID;
+
+        }
+        
+        if(displayTrendID != null){
+
+            itemID = displayTrendID;
+
+        }
 
         console.log(displayFavID);
         queryMode = "get";
         queryURL = "https://food2fork.com/api/get?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
-        queryURL += displayFavID;
+        queryURL += itemID;
 
         //ajax call to return results for query
         $.ajax({
@@ -64,7 +78,10 @@ $(document).ready(function () {
         }).then(function (response) {
             var results = JSON.parse(response);
             console.log(results);
-            $("#recipe-image").attr("src", results.recipe.image_url);
+            var imageDiv = $("<img>");
+            imageDiv.attr("src", results.recipe.image_url);
+            $(".images").append(imageDiv);
+            
             $.each(results.recipe.ingredients, function (index) {
                 var newInput = $("<input>");
                 newInput.attr("type", "checkbox");
@@ -85,6 +102,8 @@ $(document).ready(function () {
 
         displayFavID = null;
         sessionStorage.setItem("favID", null);
+        displayTrendID = null;
+        sessionStorage.setItem("trendID", null);
     }else{}
 
 });
@@ -447,7 +466,7 @@ $(document).on("click", "#signup-submit", function (event) {
                                 if(childData.uid==user.uid){
                                     console.log(childData.pkey);
                                 firebase.database().ref().child(pushkey.path.pieces_[pushkey.path.pieceNum_])
-                                    .set({ recipeid: childDate.recipeid , username: childData.username, uid: childData.uid, pkey: pushkey.path.pieces_[pushkey.path.pieceNum_] });
+                                    .set({ recipeid: childData.recipeid , username: childData.username, uid: childData.uid, pkey: pushkey.path.pieces_[pushkey.path.pieceNum_] });
                             
                                 }
                             });
@@ -551,7 +570,7 @@ $(document).on("click", "#modal-close", function () {
 $(document).on("click", ".recipe-select", function () {
     var selectedRecipe = searchedRecipeList[parseInt($(this).attr("data-index"))];
 
-    $("#recipe-image").attr("src", selectedRecipe.image_url);
+    $(".images").html("<a href='" + selectedRecipe.source_url + "' target='_blank'><img id='recipe-image' src=" + selectedRecipe.image_url + "></a>");
 
     //reset #ingredient-list
     $("#ingredient-list").html("");
@@ -601,6 +620,47 @@ $(document).on("click", ".like-btn", function(){
 
     console.log(favoritesArray);
 
+
+});
+
+$(document).on("click", "#favorites-link", function(){
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        
+        if (user) {
+            var pushKey = localStorage.getItem("pushKey"); 
+            var fa;  
+           
+            database.ref().once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childData = childSnapshot.val();
+                    if(childData.uid==user.uid){
+                        if (childData.recipeid != ""){
+                            
+                        fa = favoritesArray.concat(childData.recipeid);}
+                        else{
+                            fa = favoritesArray;
+                        }
+
+                        console.log("este es concat: " + fa);
+                        console.log(pushKey);
+                    firebase.database().ref('/' + pushkey)
+                        .set({ recipeid: fa , username: childData.username, uid: childData.uid, pkey: childData.pkey });
+                
+                    }
+                });
+            });
+        
+        } else {
+            // User is signed out.
+            // ...
+        }
+    
+    });
+
+    setTimeout(function () {
+        self.location.href = 'favorites.html'
+    }, 2000)
 
 });
 
