@@ -33,7 +33,7 @@ $(document).ready(function(){
         console.log(favoritesArray);
 
         rID = favoritesArray[i];
-        var favURL = "https://food2fork.com/api/get?key=7437f524fdb0830ecafc3da7be402e09&rId=" + rID;
+        var favURL = "https://food2fork.com/api/get?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=" + rID;
 
     $.ajax({
             url: favURL,
