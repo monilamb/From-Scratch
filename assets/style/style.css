@@ -10,6 +10,7 @@ body {
     color:  #fff;
     background-color: #fdf8db;   
     overflow-x: hidden; 
+    font-family: 'Varela Round', sans-serif;
 }    
 .main-page-bg {
     position: absolute;
