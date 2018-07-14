@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>From Scratch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css" />
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script src="assets/js/app.js"></script>
+</head>
+
+<body>
+
+    <div class="main-page-bg">
+        <div style="background-color: #fdf8db; padding: 0" class="container-fluid">
+
+        
+            <div class="jumbotron jumbotron-fluid sticky-top">
+        
+                <div style="align-items: center" class="row">
+                    <a href="main-page.html" class="col-2">
+                        <img style="width: 100%; height: 95px; position: relative; top: 50%;" src="assets/images/logo2.png">
+                    </a>
+
+                    
+
+                    <div class="btn-group links col-3 offset-7">
+                        <a href="trending.html">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_whatshot_black_48dp.png">Trending</button>
+                        </a>
+                        <a href="favorites.html">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_favorite_black_48dp.png">Favorite's</button>
+                        </a>
+                        <a href="#">
+                            <button style="display: inline-flex" id="sign-out-btn" type="button" class="linkBtn"><img src="assets/images/baseline_highlight_off_black_48dp.png">Log Out</button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        
+            
+            <div style="padding: 0; height: 110vh;" class="mid-bg container-fluid">
+                <div style="height: 110vh;" class="pic-overlay"></div>
+                <div style="top: 5%" class="pic-content">
+                    <img class="col-2 animated fadeIn" style="" src="assets/images/logo2.png" alt="">
+                    <h2 class="animated fadeIn" style="text-align: center">Contact Form</h2>
+                    <div class="contact-form animated fadeIn">
+                            <div><h3 class="name-font">Name</h3></div>
+                                <form id="contact-form" method="POST" action="">
+                                <input name="name" type="text" class="form-control" placeholder="Your Name" required>
+                    
+                        
+                    
+                            <div><h3 class="email-font">E-mail</h3></div>
+                                <input name="email" type="email" class="form-control" placeholder="Your E-mail" required>
+                    
+                        
+                    
+                            <div><h3 class="message-font">Message</h3></div>
+                                <textarea name="message" class="form-control" placeholder="Message" rows="5" required></textarea>
+                        
+                                <input type="submit" class="form-control submit" placeholder="Send Message">
+                    
+                            </form>
+                        </div>
+
+                        <br>
+
+                        <div class="animated fadeIn" style="background-color: #ffefa9; width: 50%;margin-left: auto;margin-right: auto; border-radius: 10px; color: #381D2A">
+                            <a href="https://github.com/alexanderjdee" class="fab fa-github fa-2x">Alex Dee&nbsp;</a>
+                            <a href="https://github.com/monilamb" class="fab fa-github fa-2x">Moinca Lambrano&nbsp;</a>
+                            <a href="https://github.com/Alex-Preissler" class="fab fa-github fa-2x">Alex Preissler&nbsp;</a>
+                            <a href="https://github.com/alewdy" class="fab fa-github fa-2x">Alewdy Silvestre</a>
+                        </div>
+                        
+                        </div>
+                </div>
+            </div>
+                
+
+
+
+
+
+                    <footer>
+                            <div class="footer">
+                              Designed by From Scratch Corp &copy; 2018 &#124; <a style="color: #381D2A; text-decoration: underline" href="#">Contact Us</a> 
+                            </div>
+                    </footer>
+    </div>
+    </div>
+
+    
+
+</body>
+<style>
+    body{
+        color: #381D2A;
+    }
+</style>
+</html>

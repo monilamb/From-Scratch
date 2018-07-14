@@ -26,8 +26,8 @@ var socialRankRecipeList = [];
 var index = 0;
 var ingredientBtn = false;
 var queryMode = "";
-var queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
-var rankURL = "http://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&sort=r";
+var queryURL = "https://food2fork.com/api/" + queryMode + "?key=7437f524fdb0830ecafc3da7be402e09&";
+var rankURL = "http://food2fork.com/api/search?key=7437f524fdb0830ecafc3da7be402e09&sort=r";
 var email = null;
 var password = null;
 var favoritesArray = [];
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
         console.log(displayFavID);
         queryMode = "get";
-        queryURL = "https://food2fork.com/api/get?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
+        queryURL = "https://food2fork.com/api/get?key=7437f524fdb0830ecafc3da7be402e09&rId=";
         queryURL += displayFavID;
 
         //ajax call to return results for query
@@ -151,21 +151,7 @@ function validateEmail(email) {
 
 }
 
-//display the top socially ranked recipes
-function displaySocialRank(){
-    //ajax call to return results for query
-    $.ajax({
-        url: rankURL,
-        method: "GET"
-    }).then(function (response) {
-        var results = JSON.parse(response);
-        console.log(results);
 
-        $.each(results.recipes, function (index) {
-            //dynamically write the recipes to the page
-        });
-    });
-}
 
 //Triggers search request, need to connect to ajax call.
 $(document).on("click", "#searchBtn", function (event) {
@@ -220,7 +206,7 @@ $(document).on("click", "#searchBtn", function (event) {
         }
 
         queryMode = "search";
-        queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
+        queryURL = "https://food2fork.com/api/" + queryMode + "?key=7437f524fdb0830ecafc3da7be402e09&";
         queryURL = queryURL + queryRecipe;
         $("#table_filter").val("");
 
@@ -262,7 +248,7 @@ $(document).on("click", "#searchBtn", function (event) {
     });
 
     //reset queryURL
-    queryURL = "https://food2fork.com/api/search?key=ac439ce8f238ddbc8d1f8d5d4e74839a&";
+    queryURL = "https://food2fork.com/api/search?key=7437f524fdb0830ecafc3da7be402e09&";
 
 });
 
@@ -571,7 +557,7 @@ $(document).on("click", ".recipe-select", function () {
     $("#ingredient-list").html("");
 
     queryMode = "get";
-    queryURL = "https://food2fork.com/api/" + queryMode + "?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
+    queryURL = "https://food2fork.com/api/" + queryMode + "?key=7437f524fdb0830ecafc3da7be402e09&rId=";
     queryURL += selectedRecipe.recipe_id;
 
     //ajax call to return results for query

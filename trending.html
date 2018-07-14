@@ -16,6 +16,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css" />
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -26,63 +27,64 @@
 <body>
 
     <div class="main-page-bg">
-        <div style="background-color: #fdf8db" class="container">
+        <div style="background-color: #fdf8db; padding: 0" class="container-fluid">
 
         
-            <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid sticky-top">
         
                 <div style="align-items: center" class="row">
                     <a href="main-page.html" class="col-2">
                         <img style="width: 100%; height: 95px; position: relative; top: 50%;" src="assets/images/logo2.png">
                     </a>
 
-                    <div class="col-6 searchFilter">
+                    <div class="    searchFilter">
 
-                            <div class="input-group">
-                                    <form id="user-input" style="width: 100%">
-                                        <input placeholder="Search Recipes..." id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
-        
-                                        <div class="input-group-btn" id="dropdown-button">
-                                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >&nbsp;</span></button>
-                                                <div class="dropdown-menu dropdown-menu-right" >
-                                                    <ul class="category_filters" >
-                                                        <li>
-                                                            <input class="category-input" data-label="All" id="all" value="r" name="radios" type="radio" checked><label for="all">Recipes</label>
-                                                        </li>
-                                                        <li>
-                                                            <input class="category-input" type="radio" name="radios" id="Design" value="i" ><label class="category-label" for="Design">Ingredients</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <button id="searchBtn" type="submit" class="btn btn-secondary btn-search" ><span class="fa fa-search"></span></button>
+                        <div class="input-group">
+                            <form id="user-input" style="width: 100%">
+                                <input placeholder="Search Recipes..." id="table_filter" type="text" aria-label="Text input with segmented button dropdown" >
+
+                                <div class="input-group-btn search-btns" id="dropdown-button">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >&nbsp;</span></button>
+                                        <div class="dropdown-menu dropdown-menu-right" >
+                                            <ul class="category_filters" >
+                                                <li>
+                                                    <input class="category-input" data-label="All" id="all" value="r" name="radios" type="radio" checked><label for="all">Recipes</label>
+                                                </li>
+                                                <li>
+                                                    <input class="category-input" type="radio" name="radios" id="Design" value="i" ><label class="category-label" for="Design">Ingredients</label>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </form> 
+                                        <button id="searchBtn" type="submit" class="btn btn-secondary btn-search" ><span style="display: inline;" class="fa fa-search"></span></button>
                                 </div>
+                            </form> 
+                        </div>
                                  
                         </div>
 
-                        <div class="btn-group links col-3">
-                            <a href="trending.html">
-                                <button type="button" class="linkBtn"><img src="assets/images/baseline_whatshot_black_48dp.png">Trending</button>
-                            </a>
-                            <a href="favorites.html">
-                                <button type="button" class="linkBtn"><img src="assets/images/baseline_favorite_black_48dp.png">Favorite's</button>
-                            </a>
-                            <a href="profile.html">
-                                <button id="sign-out-btn" type="button" class="linkBtn"><img src="assets/images/baseline_highlight_off_black_48dp.png">Sign Out</button>
-                            </a>
-                        </div>
+                    <div class="btn-group links col-3">
+                        <a href="trending.html">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_whatshot_black_48dp.png">Trending</button>
+                        </a>
+                        <a href="favorites.html">
+                            <button type="button" class="linkBtn"><img src="assets/images/baseline_favorite_black_48dp.png">Favorite's</button>
+                        </a>
+                        <a href="#">
+                            <button style="display: inline-flex;" id="sign-out-btn" type="button" class="linkBtn"><img src="assets/images/baseline_highlight_off_black_48dp.png">Log Out</button>
+                        </a>
+                    </div>
                 </div>
 
             </div>
         
-        <br>
-        <br>
+            <div style="padding: 0; height:40vh;" class="mid-trending-bg container-fluid">
+                    <div style="height: 40vh" class="pic-overlay"></div>
+                    <div style="top: 30%" class="pic-content">
+                        <h3 class="col-md-4 offset-4 animated fadeIn">Top 30 Trending Recipes!</h3>
+                    </div>
+                </div>
 
-            <div class="">
-                <h3 style="text-align: center;">Top 50 Trending recipes!</h3>
-                <hr>
-            </div>
+
 
             <div class="row data">
                 <div class="col-6 recipe">
@@ -96,6 +98,7 @@
                 </div>
             </div>
                 
+            <br>
 
                 <div class="col-12 ingredients">
                     <h3>Ingredients</h3>
@@ -105,12 +108,19 @@
                     </form>
                 </div>
 
+                <br>
 
+                <footer>
+                        <div class="footer">
+                          Designed by From Scratch Corp &copy; 2018 &#124; <a style="color: #381D2A; text-decoration: underline" href="contact.html">Contact Us</a> 
+                        </div>
+                </footer>
 
     </div>
     </div>
 
 </body>
+<script src="assets/js/trending.js"></script>
 <style>
     body{
         color: #381D2A;
