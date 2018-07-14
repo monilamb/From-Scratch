@@ -170,21 +170,7 @@ function validateEmail(email) {
 
 }
 
-//display the top socially ranked recipes
-function displaySocialRank(){
-    //ajax call to return results for query
-    $.ajax({
-        url: rankURL,
-        method: "GET"
-    }).then(function (response) {
-        var results = JSON.parse(response);
-        console.log(results);
 
-        $.each(results.recipes, function (index) {
-            //dynamically write the recipes to the page
-        });
-    });
-}
 
 //Triggers search request, need to connect to ajax call.
 $(document).on("click", "#searchBtn", function (event) {
