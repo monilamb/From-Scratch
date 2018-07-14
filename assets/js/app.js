@@ -79,6 +79,7 @@ $(document).ready(function () {
             var results = JSON.parse(response);
             console.log(results);
             var imageDiv = $("<img>");
+            imageDiv.attr("id", "recipe-image");
             imageDiv.attr("src", results.recipe.image_url);
             $(".images").append(imageDiv);
             
@@ -180,7 +181,8 @@ $(document).on("click", "#searchBtn", function (event) {
     //reset #recipe-list and searchedRecipeList array on new search
     $("#recipe-list").html("");
     searchedRecipeList = [];
-    $("#recipe-image").attr("src", "");
+    $(".images").html("");
+    $("#ingredient-list").html("");
 
     var category = $(".category-input:checked").val();
 
