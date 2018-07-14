@@ -34,6 +34,7 @@ var favoritesArray = [];
 var favoritesIndex = 0;
 var pushkey;
 var displayFavID = sessionStorage.getItem("favID");
+var displayTrendID = sessionStorage.getItem("trendID");
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -49,13 +50,26 @@ $(document).ready(function () {
     });
 
 //displays selected favorites ingredients and image on main.
-    if(displayFavID != null){
+    if(displayFavID != null || displayTrendID != null){
 
+        var itemID;
+
+        if(displayFavID != null){
+
+            itemID = displayFavID;
+
+        }
+        
+        if(displayTrendID != null){
+
+            itemID = displayTrendID;
+
+        }
 
         console.log(displayFavID);
         queryMode = "get";
         queryURL = "https://food2fork.com/api/get?key=ac439ce8f238ddbc8d1f8d5d4e74839a&rId=";
-        queryURL += displayFavID;
+        queryURL += itemID;
 
         //ajax call to return results for query
         $.ajax({
@@ -88,6 +102,8 @@ $(document).ready(function () {
 
         displayFavID = null;
         sessionStorage.setItem("favID", null);
+        displayTrendID = null;
+        sessionStorage.setItem("trendID", null);
     }else{}
 
 });
