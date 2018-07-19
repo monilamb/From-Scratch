@@ -1,4 +1,4 @@
-# Project1
+# From Scratch
 
 From Scratch is an app that helps people who want to know what they can cook with using ingredients they already have. This helps minimize the amount of grocery shopping the user will need to do.
 
